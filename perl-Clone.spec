@@ -4,14 +4,14 @@
 #
 Name     : perl-Clone
 Version  : 0.39
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.39.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.39.tar.gz
 Summary  : 'recursively copy Perl datatypes'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Clone-lib
-Requires: perl-Clone-man
+Requires: perl-Clone-lib = %{version}-%{release}
+BuildRequires : buildreq-cpan
 
 %description
 Clone - recursively copy Perl datatypes
@@ -20,20 +20,22 @@ Clone - recursively copy Perl datatypes
 [![Coverage Status](https://coveralls.io/repos/garu/Clone/badge.png?branch=master)](https://coveralls.io/r/garu/Clone?branch=master)
 [![CPAN version](https://badge.fury.io/pl/Clone.svg)](https://metacpan.org/pod/Clone)
 
+%package dev
+Summary: dev components for the perl-Clone package.
+Group: Development
+Requires: perl-Clone-lib = %{version}-%{release}
+Provides: perl-Clone-devel = %{version}-%{release}
+
+%description dev
+dev components for the perl-Clone package.
+
+
 %package lib
 Summary: lib components for the perl-Clone package.
 Group: Libraries
 
 %description lib
 lib components for the perl-Clone package.
-
-
-%package man
-Summary: man components for the perl-Clone package.
-Group: Default
-
-%description man
-man components for the perl-Clone package.
 
 
 %prep
@@ -62,9 +64,9 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 if test -f Makefile.PL; then
-make pure_install PERL_INSTALL_ROOT=%{buildroot}
+make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
-./Build install --installdirs=site --destdir=%{buildroot}
+./Build install --installdirs=vendor --destdir=%{buildroot}
 fi
 find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
@@ -73,13 +75,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/Clone.pm
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Clone/autosplit.ix
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/Clone.pm
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/Clone/autosplit.ix
+
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Clone.3
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib/perl5/site_perl/5.26.1/x86_64-linux-thread-multi/auto/Clone/Clone.so
-
-%files man
-%defattr(-,root,root,-)
-/usr/share/man/man3/Clone.3
+/usr/lib/perl5/vendor_perl/5.26.1/x86_64-linux-thread-multi/auto/Clone/Clone.so
