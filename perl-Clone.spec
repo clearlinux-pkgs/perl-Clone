@@ -4,7 +4,7 @@
 #
 Name     : perl-Clone
 Version  : 0.41
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.41.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.41.tar.gz
 Summary  : 'recursively copy Perl datatypes'
