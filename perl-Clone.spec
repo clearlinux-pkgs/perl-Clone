@@ -4,10 +4,10 @@
 #
 Name     : perl-Clone
 Version  : 0.41
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.41.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/G/GA/GARU/Clone-0.41.tar.gz
-Summary  : 'recursively copy Perl datatypes'
+Summary  : Recursive copy of nested objects.
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
 Requires: perl-Clone-lib = %{version}-%{release}
@@ -21,6 +21,7 @@ Summary: dev components for the perl-Clone package.
 Group: Development
 Requires: perl-Clone-lib = %{version}-%{release}
 Provides: perl-Clone-devel = %{version}-%{release}
+Requires: perl-Clone = %{version}-%{release}
 
 %description dev
 dev components for the perl-Clone package.
