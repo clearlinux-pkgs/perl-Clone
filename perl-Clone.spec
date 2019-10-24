@@ -4,13 +4,13 @@
 #
 Name     : perl-Clone
 Version  : 0.43
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.43.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.43.tar.gz
 Summary  : 'recursively copy Perl datatypes'
 Group    : Development/Tools
 License  : Artistic-1.0-Perl
-Requires: perl-Clone-data = %{version}-%{release}
+Requires: perl-Clone-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 BuildRequires : perl(B::COW)
 
@@ -21,23 +21,23 @@ Clone - recursively copy Perl datatypes
 [![Coverage Status](https://coveralls.io/repos/garu/Clone/badge.png?branch=master)](https://coveralls.io/r/garu/Clone?branch=master)
 [![CPAN version](https://badge.fury.io/pl/Clone.svg)](https://metacpan.org/pod/Clone)
 
-%package data
-Summary: data components for the perl-Clone package.
-Group: Data
-
-%description data
-data components for the perl-Clone package.
-
-
 %package dev
 Summary: dev components for the perl-Clone package.
 Group: Development
-Requires: perl-Clone-data = %{version}-%{release}
 Provides: perl-Clone-devel = %{version}-%{release}
 Requires: perl-Clone = %{version}-%{release}
 
 %description dev
 dev components for the perl-Clone package.
+
+
+%package perl
+Summary: perl components for the perl-Clone package.
+Group: Default
+Requires: perl-Clone = %{version}-%{release}
+
+%description perl
+perl components for the perl-Clone package.
 
 
 %prep
@@ -78,12 +78,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files
 %defattr(-,root,root,-)
 
-%files data
+%files dev
+%defattr(-,root,root,-)
+/usr/share/man/man3/Clone.3
+
+%files perl
 %defattr(-,root,root,-)
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/Clone.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Clone/Clone.so
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/auto/Clone/autosplit.ix
-
-%files dev
-%defattr(-,root,root,-)
-/usr/share/man/man3/Clone.3
