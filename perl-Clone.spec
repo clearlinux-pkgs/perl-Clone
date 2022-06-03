@@ -4,7 +4,7 @@
 #
 Name     : perl-Clone
 Version  : 0.45
-Release  : 29
+Release  : 30
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.45.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.45.tar.gz
 Summary  : 'recursively copy Perl datatypes'
@@ -85,6 +85,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/Clone.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/Clone/Clone.so
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/auto/Clone/autosplit.ix
+/usr/lib/perl5/*
