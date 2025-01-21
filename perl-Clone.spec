@@ -7,7 +7,7 @@
 #
 Name     : perl-Clone
 Version  : 0.47
-Release  : 40
+Release  : 41
 URL      : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.47.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AT/ATOOMIC/Clone-0.47.tar.gz
 Summary  : 'recursively copy Perl datatypes'
